@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#calendar {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.table-calendar {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-calendar th, .table-calendar td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.table-calendar th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.table-calendar td.available {
+    background-color: #d4edda;
+}
+
+.table-calendar td.unavailable {
+    background-color: #f8d7da;
+}
+
+.form-control {
+
+}

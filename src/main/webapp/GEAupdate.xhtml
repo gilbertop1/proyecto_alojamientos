@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+    <h:head>
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Alojamientos - Proveedor de Alojamientos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .table-responsive {
+            margin-top: 20px;
+        }
+    </style>
+    </h:head>
+    <h:body>
+      
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Provedores</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="DashBoard.xhtml">Dashboard</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="GestionAlojamientos.xhtml">Gestión de Alojamientos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="GestionDisponibilidad.xhtml">Disponibilidad</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="GestionReservas.xhtml">Reservas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="InfoEsta.xhtml">Informes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="PerfilProvedor.xhtml">Perfil</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container dashboard-container">
+        <div class="card">
+            <div class="card-header">
+                <h5>Gestión de Alojamientos</h5>
+            </div>
+            <div class="card-body">
+                <form action="guardar_alojamiento.xhtml" method="post">
+                    <div class="form-group">
+                        <label for="nombre_alojamiento">Nombre del Alojamiento:</label>
+                        <input type="text" id="nombre_alojamiento" name="nombre_alojamiento" class="form-control" value="Hotel ABC" />
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion_alojamiento">Dirección:</label>
+                        <input type="text" id="direccion_alojamiento" name="direccion_alojamiento" class="form-control" value="Calle Ejemplo, 123, Ciudad, País" />
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono_alojamiento">Teléfono:</label>
+                        <input type="tel" id="telefono_alojamiento" name="telefono_alojamiento" class="form-control" value="123-456-7890" />
+                    </div>
+
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <h5>Habitaciones</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Tipo de Habitación</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio por Noche</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="habitaciones">
+                                <tr>
+                                    <td>
+                                        <input type="text" name="tipo_habitacion[]" class="form-control" value="Individual" />
+                                    </td>
+                                    <td>
+                                        <input type="number" name="cantidad_habitacion[]" class="form-control" value="10" />
+                                    </td>
+                                    <td>
+                                        <input type="number" name="precio_habitacion[]" class="form-control" value="50" />
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" onclick="eliminarHabitacion(this)">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <!-- Más filas de habitaciones aquí -->
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-success" onclick="agregarHabitacion()">Agregar Habitación</button>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="reset" class="btn btn-secondary">Cancelar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function agregarHabitacion() {
+            var table = document.getElementById("habitaciones");
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+
+            cell1.innerHTML = '<input type="text" name="tipo_habitacion[]" class="form-control" />';
+            cell2.innerHTML = '<input type="number" name="cantidad_habitacion[]" class="form-control" />';
+            cell3.innerHTML = '<input type="number" name="precio_habitacion[]" class="form-control" />';
+            cell4.innerHTML = '<button type="button" class="btn btn-danger" onclick="eliminarHabitacion(this)">Eliminar</button>';
+        }
+
+        function eliminarHabitacion(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        
+        
+        
+        
+        
+    </h:body>
+</html>

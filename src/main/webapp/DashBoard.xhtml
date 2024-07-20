@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Proveedor de Alojamientos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+    </style>
+    </h:head>
+    <h:body>
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Provedores</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="DashBoard.xhtml">Dashboard</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="GestionAlojamientos.xhtml">Gestión de Alojamientos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="GestionDisponibilidad.xhtml">Disponibilidad</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="GestionReservas.xhtml">Reservas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="InfoEsta.xhtml">Informes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="PerfilProvedor.xhtml">Perfil</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container dashboard-container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card text-white bg-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">Alojamientos</h5>
+                        <p class="card-text">Gestiona tus alojamientos.</p>
+                        <a href="gestion_alojamientos.xhtml" class="btn btn-light">Ir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-success">
+                    <div class="card-body">
+                        <h5 class="card-title">Disponibilidad</h5>
+                        <p class="card-text">Controla la disponibilidad de habitaciones.</p>
+                        <a href="disponibilidad.xhtml" class="btn btn-light">Ir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-warning">
+                    <div class="card-body">
+                        <h5 class="card-title">Reservas</h5>
+                        <p class="card-text">Administra las reservas de tus clientes.</p>
+                        <a href="reservas.xhtml" class="btn btn-light">Ir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-danger">
+                    <div class="card-body">
+                        <h5 class="card-title">Informes</h5>
+                        <p class="card-text">Genera informes y estadísticas.</p>
+                        <a href="informes.xhtml" class="btn btn-light">Ir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Últimas Reservas</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">Reserva 1 - Hotel ABC</li>
+                            <li class="list-group-item">Reserva 2 - Hostal XYZ</li>
+                            <li class="list-group-item">Reserva 3 - Hotel DEF</li>
+                            <!-- Más reservas -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Estadísticas de Ocupación</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Gráfica de ocupación (aquí podrías incluir una gráfica real usando una librería de gráficos).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </h:body>
+</html>

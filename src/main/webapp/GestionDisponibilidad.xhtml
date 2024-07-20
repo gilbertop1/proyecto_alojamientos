@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Disponibilidad - Proveedor de Alojamientos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .calendar {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Provedores</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="DashBoard.xhtml">Dashboard</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="GestionAlojamientos.xhtml">Gestión de Alojamientos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="GestionDisponibilidad.xhtml">Disponibilidad</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="GestionReservas.xhtml">Reservas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="InfoEsta.xhtml">Informes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="PerfilProvedor.xhtml">Perfil</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container dashboard-container">
+        <div class="card">
+            <div class="card-header">
+                <h5>Gestión de Disponibilidad</h5>
+            </div>
+            <div class="card-body">
+                <form action="gestionar_disponibilidad.xhtml" method="post">
+                    <div class="form-group">
+                        <label for="alojamiento">Seleccionar Alojamiento:</label>
+                        <select id="alojamiento" name="alojamiento" class="form-control">
+                            <option value="1">Hotel ABC</option>
+                            <option value="2">Hostal XYZ</option>
+                            <!-- Más opciones de alojamiento aquí -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipo_habitacion">Seleccionar Tipo de Habitación:</label>
+                        <select id="tipo_habitacion" name="tipo_habitacion" class="form-control">
+                            <option value="individual">Individual</option>
+                            <option value="doble">Doble</option>
+                            <option value="suite">Suite</option>
+                            <!-- Más tipos de habitación aquí -->
+                        </select>
+                    </div>
+                </form>
+                <div id="calendar" class="calendar"></div>
+                <button type="submit" class="btn btn-primary mt-3">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+    
+    
+            <!-- Footer -->
+        <footer class="bg-light text-center text-lg-start">
+            <div class="container p-4">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                        <h5 class="text-uppercase" style="color: black;">Sobre Nosotros</h5>
+                        <p>Proveemos una plataforma para que encuentres los mejores alojamientos adaptados a tus necesidades.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase" style="color: black;">Enlaces Útiles</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#!" class="text-dark">Inicio</a></li>
+                            <li><a href="#!" class="text-dark">Sobre Nosotros</a></li>
+                            <li><a href="#!" class="text-dark">Contactos</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase" style="color: black;">Contactos</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#!" class="text-dark">Email: info@alojamientos.com</a></li>
+                            <li><a href="#!" class="text-dark">Tel: +123 456 7890</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center p-3" style="background-color: rgb(34, 139, 34);">
+                © 2024 Proveedores de Alojamiento
+            </div>
+        </footer>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                editable: true,
+                events: [
+                    {
+                        title: 'Disponible',
+                        start: '2024-08-01',
+                        end: '2024-08-05',
+                        color: 'green'
+                    },
+                    {
+                        title: 'No Disponible',
+                        start: '2024-08-06',
+                        end: '2024-08-07',
+                        color: 'red'
+                    }
+                ],
+                dayClick: function(date, jsEvent, view) {
+                    var availability = prompt('Ingrese la disponibilidad (Disponible/No Disponible):');
+                    if (availability === 'Disponible') {
+                        $('#calendar').fullCalendar('renderEvent', {
+                            title: 'Disponible',
+                            start: date,
+                            color: 'green'
+                        }, true);
+                    } else if (availability === 'No Disponible') {
+                        $('#calendar').fullCalendar('renderEvent', {
+                            title: 'No Disponible',
+                            start: date,
+                            color: 'red'
+                        }, true);
+                    }
+                },
+                eventClick: function(event, jsEvent, view) {
+                    if (confirm('¿Desea eliminar esta disponibilidad?')) {
+                        $('#calendar').fullCalendar('removeEvents', event._id);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
