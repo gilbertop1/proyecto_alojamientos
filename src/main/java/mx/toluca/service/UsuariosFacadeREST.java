@@ -60,20 +60,7 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
     public Usuarios find(@PathParam("id") Integer id) {
         return super.find(id);
     }
-        
-    @GET
-    @Path("{correo}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Usuarios findCo(@PathParam("correo") String correo) {
-        return super.find(correo);
-    }
-    
-    @GET
-    @Path("{contrasena}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Usuarios findPass(@PathParam("contrasena") String pass) {
-        return super.find(pass);
-    }
+
 
     
     @GET
