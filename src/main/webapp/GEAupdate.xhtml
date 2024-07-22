@@ -69,12 +69,36 @@
                         <label for="nombre_alojamiento">Nombre del Alojamiento:</label>
                         <input type="text" id="nombre_alojamiento" name="nombre_alojamiento" class="form-control" value="Hotel ABC" />
                     </div>
+                    
+                    
                     <div class="form-group">
-                        <label for="direccion_alojamiento">Dirección:</label>
+                        <label for="direccion_alojamiento">Estado:</label>
+                        <input type="text" id="direccion_alojamiento" name="direccion_alojamiento" class="form-control" value="EDOMEX" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="direccion_alojamiento">Calle:</label>
                         <input type="text" id="direccion_alojamiento" name="direccion_alojamiento" class="form-control" value="Calle Ejemplo, 123, Ciudad, País" />
                     </div>
+                    
+                     <div class="form-group">
+                        <label for="direccion_alojamiento">Numero:</label>
+                        <input type="text" id="direccion_alojamiento" name="direccion_alojamiento" class="form-control" value=" 123" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono_alojamiento">Codigo Postal:</label>
+                        <input type="tel" id="telefono_alojamiento" name="telefono_alojamiento" class="form-control" value="456" />
+                    </div>
+                    
+                    
                     <div class="form-group">
                         <label for="telefono_alojamiento">Teléfono:</label>
+                        <input type="tel" id="telefono_alojamiento" name="telefono_alojamiento" class="form-control" value="123-456-7890" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono_alojamiento">Cuenta Bancaria:</label>
                         <input type="tel" id="telefono_alojamiento" name="telefono_alojamiento" class="form-control" value="123-456-7890" />
                     </div>
 
@@ -98,8 +122,9 @@
                             <thead>
                                 <tr>
                                     <th>Tipo de Habitación</th>
-                                    <th>Cantidad</th>
+                                    <th>Capacidad</th>
                                     <th>Precio por Noche</th>
+                                    <th>Cantidad</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -109,11 +134,16 @@
                                         <input type="text" name="tipo_habitacion[]" class="form-control" value="Individual" />
                                     </td>
                                     <td>
-                                        <input type="number" name="cantidad_habitacion[]" class="form-control" value="10" />
+                                        <input type="number" name="capacidad_habitacion[]" class="form-control" value="3" />
                                     </td>
                                     <td>
                                         <input type="number" name="precio_habitacion[]" class="form-control" value="50" />
                                     </td>
+                                    
+                                    <td>
+                                        <input type="number" name="cantidad_habitacion[]" class="form-control" value="1" />
+                                    </td>
+                                    
                                     <td>
                                         <button type="button" class="btn btn-danger" onclick="eliminarHabitacion(this)">Eliminar</button>
                                     </td>
@@ -139,11 +169,14 @@
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
             var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
 
             cell1.innerHTML = '<input type="text" name="tipo_habitacion[]" class="form-control" />';
-            cell2.innerHTML = '<input type="number" name="cantidad_habitacion[]" class="form-control" />';
+            cell2.innerHTML = '<input type="number" name="capacidad_habitacion[]" class="form-control" />';
             cell3.innerHTML = '<input type="number" name="precio_habitacion[]" class="form-control" />';
-            cell4.innerHTML = '<button type="button" class="btn btn-danger" onclick="eliminarHabitacion(this)">Eliminar</button>';
+            cell4.innerHTML = '<input type="number" name="cantidad_habitacion[]" class="form-control" />';
+            cell5.innerHTML = '<button type="button" class="btn btn-danger" onclick="eliminarHabitacion(this)">Eliminar</button>';
         }
 
         function eliminarHabitacion(button) {
