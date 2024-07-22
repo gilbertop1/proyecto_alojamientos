@@ -30,9 +30,10 @@ public class ControladorLoging {
        private List<Usuarios> in ;
     
     
-    public void botonSiguiente(){
+    public String botonSiguiente(){
         System.out.println("Registros: " + getLg().count());
         System.out.println("Prueba!!!!");
+        return "GestionAlojamientos?faces-redirect=true";
     }
 
     public UsuariosFacadeREST getLg() {

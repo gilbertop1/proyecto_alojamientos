@@ -56,7 +56,10 @@
                     <input type="checkbox" class="form-check-input" id="remember" />
                     <label class="form-check-label" for="remember">Recordarme</label>
                 </div>
-                <a href="GestionAlojamientos.xhtml" class="btn btn-primary w-100" onclick="#{controladorLoging.botonSiguiente()}">Iniciar Sesión</a>
+                
+                 <h:form>
+                <h:commandButton value="Iniciar Sesión" action="#{controladorLoging.botonSiguiente}" class="btn btn-primary w-100" />
+                </h:form>
                 
                
                 <div class="text-center mt-3">
