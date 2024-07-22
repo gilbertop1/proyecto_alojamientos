@@ -61,8 +61,6 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
         return super.find(id);
     }
 
-
-    
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
