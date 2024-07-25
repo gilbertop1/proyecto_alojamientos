@@ -5,7 +5,7 @@
     <artifactId>xmockups</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
-    <name>xmockups-1.0</name>
+    <name>Backend</name>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

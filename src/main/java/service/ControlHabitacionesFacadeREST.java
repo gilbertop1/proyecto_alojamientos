@@ -17,34 +17,34 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import java.util.List;
-import tecnm.toluca.pruebas.Usuarios;
+import mx.toluca.tecnm.ControlHabitaciones;
 
 /**
  *
  * @author GPG
  */
 @Stateless
-@Path("tecnm.toluca.pruebas.usuarios")
-public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
+@Path("mx.toluca.tecnm.controlhabitaciones")
+public class ControlHabitacionesFacadeREST extends AbstractFacade<ControlHabitaciones> {
 
-    @PersistenceContext(unitName = "")
+    @PersistenceContext(unitName = "my_persistence_unit")
     private EntityManager em;
 
-    public UsuariosFacadeREST() {
-        super(Usuarios.class);
+    public ControlHabitacionesFacadeREST() {
+        super(ControlHabitaciones.class);
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Usuarios entity) {
+    public void create(ControlHabitaciones entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Integer id, Usuarios entity) {
+    public void edit(@PathParam("id") Integer id, ControlHabitaciones entity) {
         super.edit(entity);
     }
 
@@ -57,21 +57,21 @@ public class UsuariosFacadeREST extends AbstractFacade<Usuarios> {
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Usuarios find(@PathParam("id") Integer id) {
+    public ControlHabitaciones find(@PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Usuarios> findAll() {
+    public List<ControlHabitaciones> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Usuarios> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<ControlHabitaciones> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 

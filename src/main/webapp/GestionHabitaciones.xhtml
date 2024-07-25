@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gestión de Habitaciones</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <style type="text/css">
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f8f9fa;
+            }
+            .navbar {
+                margin-bottom: 20px;
+                background-color: #228B22;
+            }
+            .card {
+                margin-bottom: 20px;
+            }
+            .dashboard-container {
+                max-width: 1200px;
+                margin: auto;
+            }
+            .table-responsive {
+                margin-top: 20px;
+            }
+            .modal-header {
+                background-color: #007bff;
+                color: white;
+            }
+            .action-section {
+                margin-top: 20px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Provedores</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="DashBoard.xhtml">Dashboard</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="GestionAlojamientos.xhtml">Gestión de Alojamientos</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="GestionHabitaciones.xhtml">Gestión de Habitaciones</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="GestionServiciosAdicionales.xhtml">Gestión de ServiciosAdicionales</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="GestionDisponibilidad.xhtml">Disponibilidad</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="GestionReservas.xhtml">Reservas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="InfoEsta.xhtml">Informes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="PerfilProvedor.xhtml">Perfil</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+        <!-- Formulario de Gestión de Habitaciones -->
+        <div class="container dashboard-container">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Gestión de Habitaciones</h5>
+                </div>
+                <div class="card-body">
+                    <h:form>
+                        <div class="form-group">
+                            <h:outputLabel for="alojamiento" value="Seleccionar Alojamiento:" />
+                            <h:selectOneMenu id="alojamiento" value="#{habitacionesController.habitacion.idAlojamiento.idAlojamiento}" class="form-control">
+                                <f:selectItems value="#{habitacionesController.alojamientos}" var="alojamiento" itemValue="#{alojamiento.idAlojamiento}" itemLabel="#{alojamiento.nombre}" />
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel for="identificador" value="Identificador:" />
+                            <h:inputText id="identificador" value="#{habitacionesController.habitacion.identificador}" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel for="capacidad" value="Capacidad:" />
+                            <h:inputText id="capacidad" value="#{habitacionesController.habitacion.capacidad}" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel for="costo" value="Costo:" />
+                            <h:inputText id="costo" value="#{habitacionesController.habitacion.costo}" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel for="cantidad" value="Cantidad:" />
+                            <h:inputText id="cantidad" value="#{habitacionesController.habitacion.cantidad}" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel for="descripcion" value="Descripción:" />
+                            <h:inputTextarea id="descripcion" value="#{habitacionesController.habitacion.descripcion}" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <h:commandButton value="Guardar" action="#{habitacionesController.saveHabitacion}" class="btn btn-primary" />
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+
+            <!-- Filtro de Alojamiento y tabla de habitaciones existentes -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>Filtrar Habitaciones por Alojamiento</h5>
+                </div>
+                <div class="card-body">
+                    <h:form prependId="false">
+                        <div class="form-group">
+                            <h:outputLabel for="filtroAlojamiento" value="Alojamiento:" />
+                            <h:selectOneMenu id="filtroAlojamiento" value="#{habitacionesController.selectedAlojamientoId}" class="form-control">
+                                <f:selectItem itemLabel="Seleccionar Alojamiento" itemValue="" />
+                                <f:selectItems value="#{habitacionesController.alojamientos}" var="alojamiento" itemValue="#{alojamiento.idAlojamiento}" itemLabel="#{alojamiento.nombre}" />
+                                <f:ajax event="change" listener="#{habitacionesController.onAlojamientoChange}" render="habitacionesTabla" />
+                            </h:selectOneMenu>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+
+            <!-- Tabla de habitaciones existentes -->
+            <h:form id="habitacionesTabla">
+                <h:panelGroup id="tablaHabitaciones" rendered="#{not empty habitacionesController.selectedAlojamientoId}">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Lista de Habitaciones</h5>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Identificador</th>
+                                        <th>Capacidad</th>
+                                        <th>Costo</th>
+                                        <th>Cantidad</th>
+                                        <th>Descripción</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ui:repeat value="#{habitacionesController.items}" var="habitacion">
+                                        <tr>
+                                            <td>#{habitacion.idHabitacion}</td>
+                                            <td>#{habitacion.identificador}</td>
+                                            <td>#{habitacion.capacidad}</td>
+                                            <td>#{habitacion.costo}</td>
+                                            <td>#{habitacion.cantidad}</td>
+                                            <td>#{habitacion.descripcion}</td>
+                                            <td>
+                                                <h:commandButton value="Editar" action="#{habitacionesController.prepareEdit(habitacion)}" class="btn btn-warning" />
+                                                <h:commandButton value="Eliminar" action="#{habitacionesController.deleteHabitacion(habitacion)}" class="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar esta habitación?');" />
+                                            </td>
+                                        </tr>
+                                    </ui:repeat>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </h:panelGroup>
+            </h:form>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    </h:body>
+</html>
